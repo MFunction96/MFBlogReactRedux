@@ -27,7 +27,7 @@ namespace MFBlogReactRedux
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<ApplicationDbContext>(option =>
-                option.UseMySQL(Configuration.GetConnectionString("MySqlConnection")));
+                option.UseMySql(Configuration.GetConnectionString("MySqlConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(config =>
                 {
@@ -43,7 +43,7 @@ namespace MFBlogReactRedux
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/build";
+                configuration.RootPath = "ReactClient/dist";
             });
         }
 
@@ -80,11 +80,11 @@ namespace MFBlogReactRedux
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = "ReactClient";
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
+                    spa.UseReactDevelopmentServer(npmScript: "dev");
                 }
             });
         }

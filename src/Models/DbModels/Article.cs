@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MFBlogReactRedux.Models.DbModels
 {
@@ -17,7 +18,8 @@ namespace MFBlogReactRedux.Models.DbModels
         /// <summary>
         /// 
         /// </summary>
-        public string Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public string Index { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -30,16 +32,17 @@ namespace MFBlogReactRedux.Models.DbModels
         /// <summary>
         /// 
         /// </summary>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime ModifyDate { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [MaxLength(int.MaxValue)]
+        [MaxLength(1024)]
         public string Body { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public IList<Tag> Tags { get; set; }
+        public ICollection<Tag> Tags { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -50,9 +53,7 @@ namespace MFBlogReactRedux.Models.DbModels
         public Article()
         {
             ArtId = Guid.NewGuid().ToString();
-            Tags = new List<Tag>();
-            CreateDate = DateTime.Now;
-            ModifyDate = DateTime.Now;
+            Tags = new HashSet<Tag>();
         }
     }
 }

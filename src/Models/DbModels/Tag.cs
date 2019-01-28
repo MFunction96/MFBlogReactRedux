@@ -16,7 +16,7 @@ namespace MFBlogReactRedux.Models.DbModels
         /// <summary>
         /// 
         /// </summary>
-        [MaxLength(64)]
+        [Required, MaxLength(64)]
         public string TagName { get; set; }
         /// <summary>
         /// 

@@ -11,13 +11,13 @@ namespace MFBlogReactRedux.Models.DbModels
         /// <summary>
         /// 
         /// </summary>
-        public IList<Article> Articles { get; set; }
+        public ICollection<Article> Articles { get; set; }
         /// <inheritdoc />
         /// <summary>
         /// </summary>
         public ApplicationUser()
         {
-            Articles = new List<Article>();
+            Articles = new HashSet<Article>();
         }
     }
 }

@@ -235,3 +235,6 @@ _Pvt_Extensions
 
 # Visual Studio Code Asset Folder
 .vscode/
+
+.idea/
+node_modules/
